@@ -3,12 +3,12 @@ package main
 func main() {}
 
 func twoSum(nums []int, target int) []int {
+	var m = make(map[int]int)
 	for i := 0; i < len(nums); i++ {
-		for j := i + 1; j < len(nums); j++ {
-			if nums[i]+nums[j] == target {
-				return []int{i, j}
-			}
+		if j, ok := m[target-nums[i]]; ok {
+			return []int{i, j}
 		}
+		m[nums[i]] = i
 	}
 	return []int{0, 0}
 }
